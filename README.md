@@ -1,2 +1,2 @@
-# Projet_c-
+# Projet
 Descktop application
