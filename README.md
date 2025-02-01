@@ -1,2 +1,2 @@
 # Projet
-Descktop application
+Desktop application
