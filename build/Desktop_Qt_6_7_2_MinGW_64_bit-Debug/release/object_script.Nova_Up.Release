@@ -1,0 +1,11 @@
+release/chartwidget.o
+release/connection.o
+release/dashbored.o
+release/employee.o
+release/main.o
+release/mainwindow.o
+release/sign_up.o
+release/moc_chartwidget.o
+release/moc_dashbored.o
+release/moc_mainwindow.o
+release/moc_sign_up.o
