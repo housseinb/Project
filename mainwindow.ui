@@ -1,0 +1,970 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1363</width>
+    <height>828</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="pushButton_6">
+    <property name="geometry">
+     <rect>
+      <x>-10</x>
+      <y>550</y>
+      <width>161</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(15, 23, 42);
+font: 12pt &quot;Sitka&quot;;
+border-color: rgb(37, 99, 235);
+color: rgb(218, 221, 239);</string>
+    </property>
+    <property name="text">
+     <string>Project</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_5">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>480</y>
+      <width>151</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(15, 23, 42);
+font: 12pt &quot;Sitka&quot;;
+border-color: rgb(37, 99, 235);
+color: rgb(218, 221, 239);</string>
+    </property>
+    <property name="text">
+     <string>Sponcor</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>-20</x>
+      <y>0</y>
+      <width>171</width>
+      <height>991</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(15, 23, 42);
+border-radius: 15px;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>-10</x>
+      <y>150</y>
+      <width>161</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 12pt &quot;Sitka&quot;;
+background-color: rgb(15, 23, 42);
+color: rgb(218, 221, 239);
+border-color: rgb(37, 99, 235);
+</string>
+    </property>
+    <property name="text">
+     <string>Dashboard</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_3">
+    <property name="geometry">
+     <rect>
+      <x>-10</x>
+      <y>340</y>
+      <width>161</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(15, 23, 42);
+border-color: rgb(37, 99, 235);
+font: 12pt &quot;Sitka&quot;;
+color: rgb(218, 221, 239);</string>
+    </property>
+    <property name="text">
+     <string>Client</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_4">
+    <property name="geometry">
+     <rect>
+      <x>-10</x>
+      <y>410</y>
+      <width>161</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(137, 81, 249);
+font: 12pt &quot;Sitka&quot;;
+border-color: rgb(37, 99, 235);
+color: rgb(218, 221, 239);</string>
+    </property>
+    <property name="text">
+     <string>Rendez vous</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>1160</x>
+      <y>20</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(15, 23, 42);
+font: 12pt &quot;Sitka&quot;;
+color: rgb(218, 221, 239);</string>
+    </property>
+    <property name="text">
+     <string>User Name</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="img2">
+    <property name="geometry">
+     <rect>
+      <x>1290</x>
+      <y>10</y>
+      <width>51</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(15, 23, 42);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>image5.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>0</y>
+      <width>1241</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(15, 23, 42);
+border-radius: 15px;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_7">
+    <property name="geometry">
+     <rect>
+      <x>500</x>
+      <y>10</y>
+      <width>461</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(15, 23, 42);
+background-color: rgb(15, 23, 42);
+border-color: rgb(37, 99, 235);
+font: 18pt &quot;Sitka&quot;;
+color: rgb(218, 221, 239);
+</string>
+    </property>
+    <property name="text">
+     <string>Client</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_2">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>270</y>
+      <width>151</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(15, 23, 42);
+border-color: rgb(37, 99, 235);
+font: 12pt &quot;Sitka&quot;;
+color: rgb(218, 221, 239);</string>
+    </property>
+    <property name="text">
+     <string>Employer</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="img">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>121</width>
+      <height>131</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(15, 23, 42);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>image4.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>60</y>
+      <width>1141</width>
+      <height>921</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="tab">
+     <attribute name="title">
+      <string>Create</string>
+     </attribute>
+     <widget class="QPushButton" name="pushButton_12">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>20</y>
+        <width>371</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);
+border-color: rgb(37, 99, 235);
+font: 11pt &quot;Sitka&quot;;
+color: rgb(0, 0, 0);
+
+</string>
+      </property>
+      <property name="text">
+       <string>Make your reservation</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_13">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>190</y>
+        <width>271</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: #1E293B;
+font: 75 16pt &quot;MS Shell Dlg 2&quot;;
+</string>
+      </property>
+      <property name="text">
+       <string>Your Phone Number</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_12">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>110</y>
+        <width>171</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: #1E293B;
+font: 75 16pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Your Name</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_15">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>270</y>
+        <width>251</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: #1E293B;
+font: 75 16pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Your Email</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="Name">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>140</y>
+        <width>441</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);
+</string>
+      </property>
+      <property name="text">
+       <string>ranim</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="Phone">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>220</y>
+        <width>441</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);
+</string>
+      </property>
+      <property name="text">
+       <string>12345689</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="Email">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>300</y>
+        <width>441</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);
+</string>
+      </property>
+      <property name="text">
+       <string>ranim</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_17">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>350</y>
+        <width>251</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: #1E293B;
+font: 75 16pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Date reservation</string>
+      </property>
+     </widget>
+     <widget class="QDateEdit" name="Date">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>380</y>
+        <width>441</width>
+        <height>41</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_25">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>430</y>
+        <width>251</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: #1E293B;
+font: 75 16pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Time of reservation</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_8">
+      <property name="geometry">
+       <rect>
+        <x>940</x>
+        <y>610</y>
+        <width>141</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(137, 81, 249);
+font: 12pt &quot;Sitka&quot;;
+border-color: rgb(37, 99, 235);
+color: rgb(218, 221, 239);</string>
+      </property>
+      <property name="text">
+       <string>Confirm</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="Time">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>470</y>
+        <width>441</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>12h0</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_22">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>80</y>
+        <width>171</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: #1E293B;
+font: 75 16pt &quot;MS Shell Dlg 2&quot;;
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="update">
+      <property name="geometry">
+       <rect>
+        <x>940</x>
+        <y>570</y>
+        <width>141</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(137, 81, 249);
+font: 12pt &quot;Sitka&quot;;
+border-color: rgb(37, 99, 235);
+color: rgb(218, 221, 239);</string>
+      </property>
+      <property name="text">
+       <string>Confirm</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_29">
+      <property name="geometry">
+       <rect>
+        <x>580</x>
+        <y>100</y>
+        <width>251</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: #1E293B;
+font: 75 16pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Sponsor</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="sponsor">
+      <property name="geometry">
+       <rect>
+        <x>580</x>
+        <y>137</y>
+        <width>341</width>
+        <height>41</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_2">
+     <attribute name="title">
+      <string>Read</string>
+     </attribute>
+     <widget class="QPushButton" name="pushButton_13">
+      <property name="geometry">
+       <rect>
+        <x>2210</x>
+        <y>690</y>
+        <width>131</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 12pt &quot;Sitka&quot;;
+background-color: rgb(170, 0, 0);
+color: rgb(218, 221, 239);
+border-color: rgb(37, 99, 235);
+</string>
+      </property>
+      <property name="text">
+       <string>Delete</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_18">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>50</y>
+        <width>21</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../Screenshot116.png</pixmap>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_16">
+      <property name="geometry">
+       <rect>
+        <x>1280</x>
+        <y>320</y>
+        <width>121</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 12pt &quot;Sitka&quot;;
+background-color: rgb(170, 0, 0);
+color: rgb(218, 221, 239);
+border-color: rgb(37, 99, 235);
+</string>
+      </property>
+      <property name="text">
+       <string>Delete</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_17">
+      <property name="geometry">
+       <rect>
+        <x>2040</x>
+        <y>690</y>
+        <width>141</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 12pt &quot;Sitka&quot;;
+background-color: rgb(37, 99, 235);
+color: rgb(218, 221, 239);
+border-color: rgb(37, 99, 235);
+</string>
+      </property>
+      <property name="text">
+       <string>Update User</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_21">
+      <property name="geometry">
+       <rect>
+        <x>1200</x>
+        <y>70</y>
+        <width>101</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(15, 23, 42);
+font: 12pt &quot;Sitka&quot;;
+color: rgb(218, 221, 239);</string>
+      </property>
+      <property name="text">
+       <string>User Name</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_19">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>261</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(137, 81, 249);
+font: 12pt &quot;Sitka&quot;;
+border-color: rgb(37, 99, 235);
+color: rgb(218, 221, 239);
+
+</string>
+      </property>
+      <property name="text">
+       <string>Reservation DATA :</string>
+      </property>
+     </widget>
+     <widget class="QScrollBar" name="verticalScrollBar">
+      <property name="geometry">
+       <rect>
+        <x>1390</x>
+        <y>120</y>
+        <width>20</width>
+        <height>701</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_21">
+      <property name="geometry">
+       <rect>
+        <x>1890</x>
+        <y>690</y>
+        <width>131</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 12pt &quot;Sitka&quot;;
+background-color: rgb(37, 99, 235);
+color: rgb(218, 221, 239);
+border-color: rgb(37, 99, 235);
+</string>
+      </property>
+      <property name="text">
+       <string>Add User</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_23">
+      <property name="geometry">
+       <rect>
+        <x>1280</x>
+        <y>280</y>
+        <width>121</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 12pt &quot;Sitka&quot;;
+background-color: rgb(37, 99, 235);
+color: rgb(218, 221, 239);
+border-color: rgb(37, 99, 235);
+</string>
+      </property>
+      <property name="text">
+       <string>Update</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_23">
+      <property name="geometry">
+       <rect>
+        <x>1320</x>
+        <y>60</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(15, 23, 42);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../NOVAUP/Nova/image5.png</pixmap>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="Search">
+      <property name="geometry">
+       <rect>
+        <x>740</x>
+        <y>50</y>
+        <width>271</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="placeholderText">
+       <string>Search</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_19">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>780</y>
+        <width>191</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(30, 41, 59);
+</string>
+      </property>
+      <property name="text">
+       <string>Bar Chart (Best for degree)</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_20">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>780</y>
+        <width>281</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(30, 41, 59);
+</string>
+      </property>
+      <property name="text">
+       <string> Pie Chart (Best for field of study)</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_24">
+      <property name="geometry">
+       <rect>
+        <x>590</x>
+        <y>780</y>
+        <width>281</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(30, 41, 59);
+</string>
+      </property>
+      <property name="text">
+       <string>Bar Chart (Top 5 most common key skills)</string>
+      </property>
+     </widget>
+     <widget class="QTableView" name="tableView">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>90</y>
+        <width>951</width>
+        <height>411</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_9">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>510</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(220, 53, 69);
+font: 12pt &quot;Sitka&quot;;
+border-color: rgb(169, 32, 48);
+color: rgb(255, 255, 255);
+border-radius: 5px;
+padding: 5px;
+</string>
+      </property>
+      <property name="text">
+       <string>Delete</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_10">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>510</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(37, 99, 235);
+font: 12pt &quot;Sitka&quot;;
+border-color: rgb(25, 75, 200);
+color: rgb(255, 255, 255);
+border-radius: 5px;
+padding: 5px;
+
+</string>
+      </property>
+      <property name="text">
+       <string>Update</string>
+      </property>
+     </widget>
+     <widget class="QTabWidget" name="tabWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>540</y>
+        <width>951</width>
+        <height>161</height>
+       </rect>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="tab_4">
+       <attribute name="title">
+        <string>Option</string>
+       </attribute>
+       <widget class="QPushButton" name="pushButton_11">
+        <property name="geometry">
+         <rect>
+          <x>470</x>
+          <y>40</y>
+          <width>83</width>
+          <height>29</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>PDF</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_15">
+        <property name="geometry">
+         <rect>
+          <x>190</x>
+          <y>40</y>
+          <width>111</width>
+          <height>29</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Trie par date</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_18">
+        <property name="geometry">
+         <rect>
+          <x>330</x>
+          <y>40</y>
+          <width>101</width>
+          <height>29</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Trie Heure</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_20">
+        <property name="geometry">
+         <rect>
+          <x>51</x>
+          <y>40</y>
+          <width>111</width>
+          <height>29</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Trie par nom</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_22">
+        <property name="geometry">
+         <rect>
+          <x>590</x>
+          <y>40</y>
+          <width>83</width>
+          <height>29</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Stat</string>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_6">
+     <attribute name="title">
+      <string>Calendar</string>
+     </attribute>
+     <widget class="QCalendarWidget" name="calendarWidget">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>20</y>
+        <width>801</width>
+        <height>531</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_24">
+      <property name="geometry">
+       <rect>
+        <x>870</x>
+        <y>320</y>
+        <width>211</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Speech</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <zorder>label_3</zorder>
+   <zorder>label</zorder>
+   <zorder>pushButton</zorder>
+   <zorder>pushButton_3</zorder>
+   <zorder>pushButton_4</zorder>
+   <zorder>pushButton_5</zorder>
+   <zorder>pushButton_6</zorder>
+   <zorder>label_5</zorder>
+   <zorder>img2</zorder>
+   <zorder>pushButton_7</zorder>
+   <zorder>pushButton_2</zorder>
+   <zorder>img</zorder>
+   <zorder>tabWidget</zorder>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
