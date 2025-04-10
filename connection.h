@@ -6,11 +6,19 @@
 
 class Connection
 {
+private:
     QSqlDatabase db;
+    static Connection* instance;
+
 public:
     Connection();
+    ~Connection();
     bool createconnect();
-    void closeConnection () ;
+    void closeConnection();
+
+    // Singleton pattern to ensure one database connection
+    static Connection* getInstance();
+    static bool isConnected();
 };
 
 #endif // CONNECTION_H

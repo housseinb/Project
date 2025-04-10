@@ -6,6 +6,11 @@
 #include <QSqlQuery>
 #include <QSqlQueryModel>
 #include <QList>
+#include <QMap>
+
+extern const QMap<QString, QString> diplomaMap;
+extern const QMap<QString, QString> domainMap;
+extern const QMap<QString, QString> skillsMap;
 
 class Client
 {
@@ -21,12 +26,14 @@ private:
     QString domain; // ComboBox field
     QStringList skills; // List of skills
 
+
 public:
     Client();  // Default constructor
     Client(QString firstName, QString lastName, QString email, QDate dateOfBirth,
            QString address, QString phone, QString diploma, QString domain, QStringList skills); // Parameterized constructor
     Client(int idClient, QString firstName, QString lastName, QString email, QDate dateOfBirth,
            QString address, QString phone, QString diploma, QString domain, QStringList skills); // Parameterized constructor
+
 
     // Getters
     int getIdClient() const { return idClient; }
@@ -45,6 +52,16 @@ public:
     bool deleteClient(int idClient) const;
     QList<Client> getAllClients() const;
     QSqlQueryModel* search(const QString &searchText) const; // Search functionality
+    bool updateClient(int idClient, QString firstName, QString lastName, QString email, QDate dateOfBirth,
+                      QString address, QString phone, QString diploma, QString domain, QStringList skills) const;
+    static QMap<QString, int> getClientsByDiploma();
+    static QMap<QString, int> getClientsByDomain();
+    static QMap<QString, int> getClientsByAgeGroup();
+
+
+    QStringList extractSkillsFromPDF(const QString &pdfPath);
+    void addSkills(const QStringList &newSkills);
+
 };
 
 #endif // CLIENT_H

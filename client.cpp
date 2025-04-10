@@ -2,6 +2,39 @@
 #include "connection.h"
 #include <QDebug>
 #include <QSqlError>
+#include <QSqlRecord>
+#include <QProcess>
+#include <QCoreApplication>
+#include <QDir>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonArray>
+
+const QMap<QString, QString> diplomaMap = {
+    {"Technician", "Technicien"},
+    {"Master", "Master"},
+    {"Engineer", "Ingénieur"}
+};
+
+const QMap<QString, QString> domainMap = {
+    {"Software Engineering", "Génie Logiciel"},
+    {"Embedded Systems", "Systèmes Embarqués"},
+    {"Data Science", "Data Science"},
+    {"Business Intelligence", "Business Intelligence"}
+};
+
+const QMap<QString, QString> skillsMap = {
+    {"Digital Marketing", "Marketing Digital"},
+    {"Multimedia Design", "Design et Multimédia"},
+    {"C/C++", "C/C++"},
+    {"Python", "Python"},
+    {"Frontend", "Frontend"},
+    {"Backend", "Backend"},
+    {"Full Stack MERN", "Full Stack MERN"},
+    {"Full Stack JS", "Full Stack JS"},
+    {"Mobile", "Mobile"},
+    {"Security", "Sécurité"}
+};
 
 Client::Client()
 {
@@ -48,53 +81,43 @@ Client::Client(int idClient, QString firstName, QString lastName, QString email,
 
 bool Client::addClient() const
 {
-
     QSqlQuery query;
     query.prepare("INSERT INTO CLIENT (NOM, PRENOM, EMAIL, DATE_NAISSANCE, ADRESSE, TELEPHONE, DIPLOME, DOMAINE_ETUDE, SKILLS) "
                   "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-    // Use valid data
-    query.addBindValue(firstName);       // "John"
-    query.addBindValue(lastName);        // "Doe"
-    query.addBindValue(email);            // "john.doe@example.com"
-    query.addBindValue(dateOfBirth);     // QDate object for "1990-01-01"
-    query.addBindValue(address);          // "123 Main St"
-    query.addBindValue(phone);            // "555-1234"
-    query.addBindValue("Technicien");     // Valid diploma
-    query.addBindValue("Génie Logiciel"); // Valid domain
-    query.addBindValue("C/C++");          // Valid skill
+    QString dbDiploma = diplomaMap.value(diploma, "Technicien");
+    QString dbDomain = domainMap.value(domain, "Génie Logiciel");
 
-    // Debugging: Print values being inserted
-    qDebug() << "Inserting client with values:";
-    qDebug() << "First Name:" << firstName;
-    qDebug() << "Last Name:" << lastName;
-    qDebug() << "Email:" << email;
-    qDebug() << "Date of Birth:" << dateOfBirth.toString("yyyy-MM-dd");
-    qDebug() << "Address:" << address;
-    qDebug() << "Phone:" << phone;
-    qDebug() << "Diploma:" << "Technicien";
-    qDebug() << "Domain:" << "Génie Logiciel";
-    qDebug() << "Skills:" << "C/C++";
+    QStringList dbSkills;
+    for (const QString& skill : skills) {
+        dbSkills.append(skillsMap.value(skill, skill));
+    }
+    QString skillsValue = dbSkills.join(", ");
+
+
+    query.addBindValue(firstName);
+    query.addBindValue(lastName);
+    query.addBindValue(email);
+    query.addBindValue(dateOfBirth);
+    query.addBindValue(address);
+    query.addBindValue(phone);
+    query.addBindValue(dbDiploma);
+    query.addBindValue(dbDomain);
+    query.addBindValue(skillsValue);
 
     if (!query.exec()) {
-        qDebug() << "Error inserting client:";
-        qDebug() << "Error code:" << query.lastError().nativeErrorCode();
-        qDebug() << "Error text:" << query.lastError().text();
-        qDebug() << "Error type:" << query.lastError().type();
-        qDebug() << "Query:" << query.lastQuery();
+        qDebug() << "Error inserting client:" << query.lastError().text();
         return false;
     }
 
-    qDebug() << "Client added successfully!";
     return true;
 }
 
-// Other methods (deleteClient, getAllClients, search) remain unchanged
+
 bool Client::deleteClient(int idClient) const
 {
-
     QSqlQuery query;
-    query.prepare("DELETE FROM Client WHERE Id_Client = :idClient");
+    query.prepare("DELETE FROM Client WHERE ID_CLIENT = :idClient");
     query.bindValue(":idClient", idClient);
 
     if (!query.exec()) {
@@ -107,29 +130,31 @@ bool Client::deleteClient(int idClient) const
 QList<Client> Client::getAllClients() const
 {
     QList<Client> clients;
-
-
-    QSqlQuery query("SELECT * FROM Client");
+    QSqlQuery query("SELECT ID_CLIENT, NOM, PRENOM, EMAIL, DATE_NAISSANCE, ADRESSE, TELEPHONE, DIPLOME, DOMAINE_ETUDE, SKILLS FROM CLIENT");
 
     while (query.next())
     {
-        // Use index-based access instead of field names to avoid encoding issues
-        int id = query.value(0).toInt(); // Assuming Id_Client is the first column
-        QString firstName = query.value(1).toString(); // Assuming Nom is the second column
-        QString lastName = query.value(2).toString(); // Assuming Prenom is the third column
-        QString email = query.value(3).toString(); // Assuming Email is the fourth column
-        QDate dateOfBirth = query.value(4).toDate(); // Assuming Date_Naissance is the fifth column
-        QString address = query.value(5).toString(); // Assuming Adresse is the sixth column
-        QString phone = query.value(6).toString(); // Assuming Telephone is the seventh column
-        QString diploma = query.value(7).toString(); // Assuming Diplome is the eighth column
-        QString domain = query.value(8).toString(); // Assuming Domaine_Etude is the ninth column
-        QStringList skills = query.value(9).toString().split(", "); // Assuming Competences is the tenth column
+        int id = query.value("ID_CLIENT").toInt();
+        QString firstName = query.value("NOM").toString();
+        QString lastName = query.value("PRENOM").toString();
+        QString email = query.value("EMAIL").toString();
+        QDate dateOfBirth = query.value("DATE_NAISSANCE").toDate();
+        QString address = query.value("ADRESSE").toString();
+        QString phone = query.value("TELEPHONE").toString();
+        QString diploma = query.value("DIPLOME").toString();
+        QString domain = query.value("DOMAINE_ETUDE").toString();
+        QString skills = query.value("SKILLS").toString();
 
-        // Debugging to see what's being retrieved
-        qDebug() << "Retrieved client:" << id << firstName << lastName << email;
+        // Debug output to verify values
+        qDebug() << "ID:" << id << "First Name:" << firstName << "Last Name:" << lastName << "Email:" << email
+                 << "DOB:" << dateOfBirth.toString() << "Address:" << address << "Phone:" << phone
+                 << "Diploma:" << diploma << "Domain:" << domain << "Skills:" << skills;
 
-        Client client(id, firstName, lastName, email, dateOfBirth, address, phone, diploma, domain, skills);
+        QStringList skillsList = skills.split(","); // Split skills into a list
+
+        Client client(id, firstName, lastName, email, dateOfBirth, address, phone, diploma, domain, skillsList);
         clients.append(client);
+        qDebug() << "Diploma:" << diploma << "Domain:" << domain << "Skills:" << skills;
     }
 
     return clients;
@@ -139,7 +164,13 @@ QSqlQueryModel* Client::search(const QString &searchText) const
 {
     auto* model = new QSqlQueryModel();
     QSqlQuery query;
-    query.prepare("SELECT * FROM Client WHERE Nom LIKE :search OR Prenom LIKE :search");
+    query.prepare("SELECT * FROM Client WHERE "
+                  "Nom LIKE :search OR "
+                  "Prenom LIKE :search OR "
+                  "Email LIKE :search OR "
+                  "Diplome LIKE :search OR "
+                  "Domaine_Etude LIKE :search OR "
+                  "Skills LIKE :search");
     query.bindValue(":search", "%" + searchText + "%");
 
     if (query.exec()) {
@@ -150,3 +181,140 @@ QSqlQueryModel* Client::search(const QString &searchText) const
 
     return model;
 }
+bool Client::updateClient(int idClient, QString firstName, QString lastName, QString email, QDate dateOfBirth,
+                          QString address, QString phone, QString diploma, QString domain, QStringList skills) const
+{
+    QSqlQuery query;
+    query.prepare("UPDATE CLIENT SET NOM = ?, PRENOM = ?, EMAIL = ?, DATE_NAISSANCE = ?, ADRESSE = ?, TELEPHONE = ?, DIPLOME = ?, DOMAINE_ETUDE = ?, SKILLS = ? WHERE ID_CLIENT = ?");
+
+    QString dbDiploma = diplomaMap.value(diploma, "Technicien");
+    QString dbDomain = domainMap.value(domain, "Génie Logiciel");
+
+    QStringList dbSkills;
+    for (const QString& skill : skills) {
+        dbSkills.append(skillsMap.value(skill, skill));
+    }
+
+    QString skillsValue = dbSkills.isEmpty() ? "C/C++" : dbSkills.join(", ");
+
+    query.addBindValue(firstName);
+    query.addBindValue(lastName);
+    query.addBindValue(email);
+    query.addBindValue(dateOfBirth);
+    query.addBindValue(address);
+    query.addBindValue(phone);
+    query.addBindValue(dbDiploma);
+    query.addBindValue(dbDomain);
+    query.addBindValue(skillsValue);
+    query.addBindValue(idClient);
+
+    if (!query.exec()) {
+        qDebug() << "Error updating client:" << query.lastError().text();
+        return false;
+    }
+
+    return true;
+}
+QMap<QString, int> Client::getClientsByDiploma() {
+    QMap<QString, int> diplomaCounts;
+    QSqlQuery query("SELECT DIPLOME, COUNT(*) FROM CLIENT GROUP BY DIPLOME");
+
+    while (query.next()) {
+        QString diploma = query.value(0).toString();
+        int count = query.value(1).toInt();
+        diplomaCounts[diploma] = count;
+    }
+
+    return diplomaCounts;
+}
+
+QMap<QString, int> Client::getClientsByDomain() {
+    QMap<QString, int> domainCounts;
+    QSqlQuery query("SELECT DOMAINE_ETUDE, COUNT(*) FROM CLIENT GROUP BY DOMAINE_ETUDE");
+
+    while (query.next()) {
+        QString domain = query.value(0).toString();
+        int count = query.value(1).toInt();
+        domainCounts[domain] = count;
+    }
+
+    return domainCounts;
+}
+
+QMap<QString, int> Client::getClientsByAgeGroup() {
+    QMap<QString, int> ageGroups;
+    QSqlQuery query("SELECT "
+                    "CASE "
+                    "WHEN FLOOR(DATEDIFF(CURRENT_DATE, DATE_NAISSANCE)/365 &lt; 20 THEN 'Under 20' "
+                    "WHEN FLOOR(DATEDIFF(CURRENT_DATE, DATE_NAISSANCE)/365 BETWEEN 20 AND 29 THEN '20-29' "
+                    "WHEN FLOOR(DATEDIFF(CURRENT_DATE, DATE_NAISSANCE)/365 BETWEEN 30 AND 39 THEN '30-39' "
+                    "WHEN FLOOR(DATEDIFF(CURRENT_DATE, DATE_NAISSANCE)/365 BETWEEN 40 AND 49 THEN '40-49' "
+                    "ELSE '50+' "
+                    "END AS age_group, "
+                    "COUNT(*) "
+                    "FROM CLIENT "
+                    "GROUP BY age_group");
+
+    while (query.next()) {
+        QString ageGroup = query.value(0).toString();
+        int count = query.value(1).toInt();
+        ageGroups[ageGroup] = count;
+    }
+
+    return ageGroups;
+}
+//////////
+///
+///
+///
+QStringList Client::extractSkillsFromPDF(const QString &pdfPath)
+{
+    QStringList skills;
+    QProcess pythonProcess;
+
+    // Determine Python executable
+    QString pythonExe = "python"; // Default
+
+#ifdef Q_OS_WIN
+    pythonExe = "python.exe"; // Windows
+#endif
+
+    // Get script path (next to executable)
+    QString scriptPath = QDir::toNativeSeparators(
+        QCoreApplication::applicationDirPath() + "/skill_extractor.py"
+        );
+
+    pythonProcess.start(pythonExe, {scriptPath, QDir::toNativeSeparators(pdfPath)});
+
+    if (!pythonProcess.waitForFinished(5000)) { // 5-second timeout
+        qDebug() << "Python process error:" << pythonProcess.errorString();
+        return skills;
+    }
+
+    QByteArray output = pythonProcess.readAllStandardOutput();
+    QJsonDocument doc = QJsonDocument::fromJson(output);
+
+    if (doc.isObject()) {
+        QJsonObject obj = doc.object();
+        if (obj["status"].toString() == "success") {
+            QJsonArray skillsArray = obj["skills"].toArray();
+            for (const QJsonValue &value : skillsArray) {
+                skills.append(value.toString());
+            }
+        } else {
+            qDebug() << "Skill extraction error:" << obj["message"].toString();
+        }
+    }
+
+    return skills;
+}
+
+/*void Client::addSkills(const QStringList &newSkills)
+{
+    for (const QString &skill : newSkills) {
+        if (!skills.contains(skill, Qt::CaseInsensitive)) {
+            skills.append(skill);
+        }
+    }
+}
+*/

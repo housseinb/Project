@@ -6,22 +6,25 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    MainWindow w;
-    Connection c;
-    bool test=c.createconnect();
-    if(test)
-    {w.show();
-        QMessageBox::information(nullptr, QObject::tr("database is open"),
-                                 QObject::tr("connection successful.\n"
+
+    // Initialize database connection
+    Connection* c = Connection::getInstance();
+    Q_UNUSED(c);
+    bool test = Connection::isConnected();
+
+    if(test) {
+        MainWindow w;
+        w.show();
+        QMessageBox::information(nullptr, QObject::tr("Database is open"),
+                                 QObject::tr("Connection successful.\n"
                                              "Click Cancel to exit."), QMessageBox::Cancel);
 
-    }
-    else
-        QMessageBox::critical(nullptr, QObject::tr("database is not open"),
-                              QObject::tr("connection failed.\n"
+        int result = a.exec();
+        return result;
+    } else {
+        QMessageBox::critical(nullptr, QObject::tr("Database is not open"),
+                              QObject::tr("Connection failed.\n"
                                           "Click Cancel to exit."), QMessageBox::Cancel);
-
-
-
-    return a.exec();
+        return 1; // Exit with error code
+    }
 }
