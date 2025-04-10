@@ -25,18 +25,20 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+    chatbot.cpp \
+    chatbotdialog.cpp \
         main.cpp \
-        mainwindow.cpp \
     connection.cpp \
     sponsor.cpp
 
 HEADERS += \
-        mainwindow.h \
+    chatbot.h \
+    chatbotdialog.h \
     connection.h \
     sponsor.h
 
 FORMS += \
-        mainwindow.ui
+    mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

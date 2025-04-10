@@ -19,6 +19,7 @@
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QProgressBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QScrollBar>
 #include <QtWidgets/QStatusBar>
@@ -57,7 +58,6 @@ public:
     QLineEdit *name;
     QDateEdit *year;
     QLabel *label_9;
-    QPushButton *pushButton_11;
     QLineEdit *email;
     QPushButton *add;
     QLineEdit *phone;
@@ -76,14 +76,27 @@ public:
     QPushButton *pushButton_19;
     QScrollBar *verticalScrollBar;
     QPushButton *pushButton_21;
-    QLabel *label_22;
     QPushButton *pushButton_23;
     QLabel *label_23;
     QTableWidget *data;
-    QPushButton *download;
+    QPushButton *downloadPdf;
     QLabel *label_19;
     QLabel *label_20;
     QLabel *label_24;
+    QComboBox *filter;
+    QLabel *label_33;
+    QProgressBar *tech;
+    QProgressBar *education;
+    QProgressBar *health;
+    QProgressBar *media;
+    QProgressBar *retail;
+    QProgressBar *other;
+    QProgressBar *real;
+    QProgressBar *finance;
+    QProgressBar *food;
+    QProgressBar *automative;
+    QPushButton *stat;
+    QPushButton *chatBotButton;
     QWidget *tab_3;
     QLineEdit *cr1;
     QLabel *label_16;
@@ -93,7 +106,6 @@ public:
     QDateEdit *year1;
     QLineEdit *address1;
     QLabel *label_26;
-    QComboBox *domain1;
     QLineEdit *email1;
     QLineEdit *phone1;
     QLabel *label_27;
@@ -103,10 +115,11 @@ public:
     QLabel *label_30;
     QLineEdit *type1;
     QLabel *label_31;
-    QPushButton *pushButton_14;
     QPushButton *pushButton_15;
     QFrame *line_2;
     QPushButton *upd;
+    QPushButton *load;
+    QComboBox *domain1;
     QWidget *tab_4;
     QPushButton *pushButton_18;
     QLineEdit *code;
@@ -114,6 +127,7 @@ public:
     QPushButton *del;
     QLabel *label;
     QComboBox *comboBox_4;
+    QComboBox *domain_2;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -197,14 +211,14 @@ public:
         table = new QTabWidget(centralWidget);
         table->setObjectName("table");
         table->setGeometry(QRect(170, 60, 1141, 917));
-        table->setStyleSheet(QString::fromUtf8("background-color: rgb(35, 215, 255);\n"
-"background-color: rgb(0, 47, 255);"));
+        table->setStyleSheet(QString::fromUtf8("background-color: rgb(0, 0, 0);"));
         tab = new QWidget();
         tab->setObjectName("tab");
         label_7 = new QLabel(tab);
         label_7->setObjectName("label_7");
         label_7->setGeometry(QRect(20, 250, 191, 21));
-        label_7->setStyleSheet(QString::fromUtf8("color: rgb(30, 41, 59);\n"
+        label_7->setStyleSheet(QString::fromUtf8("color:rgb(255, 255, 255);\n"
+"\n"
 ""));
         line = new QFrame(tab);
         line->setObjectName("line");
@@ -214,7 +228,8 @@ public:
         label_8 = new QLabel(tab);
         label_8->setObjectName("label_8");
         label_8->setGeometry(QRect(20, 330, 171, 21));
-        label_8->setStyleSheet(QString::fromUtf8("color: #1E293B;"));
+        label_8->setStyleSheet(QString::fromUtf8("color:rgb(255, 255, 255);\n"
+""));
         address = new QLineEdit(tab);
         address->setObjectName("address");
         address->setGeometry(QRect(310, 280, 241, 41));
@@ -224,16 +239,18 @@ public:
         label_10 = new QLabel(tab);
         label_10->setObjectName("label_10");
         label_10->setGeometry(QRect(20, 80, 191, 21));
-        label_10->setStyleSheet(QString::fromUtf8("color: rgb(30, 41, 59);\n"
+        label_10->setStyleSheet(QString::fromUtf8("color:rgb(255, 255, 255);\n"
 ""));
         label_13 = new QLabel(tab);
         label_13->setObjectName("label_13");
         label_13->setGeometry(QRect(310, 170, 171, 21));
-        label_13->setStyleSheet(QString::fromUtf8("color: #1E293B;"));
+        label_13->setStyleSheet(QString::fromUtf8("color:rgb(255, 255, 255);\n"
+""));
         label_12 = new QLabel(tab);
         label_12->setObjectName("label_12");
         label_12->setGeometry(QRect(310, 80, 171, 21));
-        label_12->setStyleSheet(QString::fromUtf8("color: #1E293B;"));
+        label_12->setStyleSheet(QString::fromUtf8("color:rgb(255, 255, 255);\n"
+""));
         cr = new QLineEdit(tab);
         cr->setObjectName("cr");
         cr->setGeometry(QRect(20, 110, 241, 41));
@@ -242,7 +259,8 @@ public:
         label_15 = new QLabel(tab);
         label_15->setObjectName("label_15");
         label_15->setGeometry(QRect(310, 250, 251, 21));
-        label_15->setStyleSheet(QString::fromUtf8("color: #1E293B;"));
+        label_15->setStyleSheet(QString::fromUtf8("color:rgb(255, 255, 255);\n"
+""));
         name = new QLineEdit(tab);
         name->setObjectName("name");
         name->setGeometry(QRect(310, 110, 241, 41));
@@ -257,15 +275,7 @@ public:
         label_9 = new QLabel(tab);
         label_9->setObjectName("label_9");
         label_9->setGeometry(QRect(20, 170, 191, 21));
-        label_9->setStyleSheet(QString::fromUtf8("color: rgb(30, 41, 59);\n"
-""));
-        pushButton_11 = new QPushButton(tab);
-        pushButton_11->setObjectName("pushButton_11");
-        pushButton_11->setGeometry(QRect(160, 10, 261, 51));
-        pushButton_11->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
-"border-color: rgb(37, 99, 235);\n"
-"font: 11pt \"Sitka\";\n"
-"color: rgb(0, 0, 0);\n"
+        label_9->setStyleSheet(QString::fromUtf8("color:rgb(255, 255, 255);\n"
 "\n"
 ""));
         email = new QLineEdit(tab);
@@ -290,6 +300,12 @@ public:
         domain->addItem(QString());
         domain->addItem(QString());
         domain->addItem(QString());
+        domain->addItem(QString());
+        domain->addItem(QString());
+        domain->addItem(QString());
+        domain->addItem(QString());
+        domain->addItem(QString());
+        domain->addItem(QString());
         domain->setObjectName("domain");
         domain->setGeometry(QRect(20, 280, 241, 41));
         pushButton_12 = new QPushButton(tab);
@@ -309,7 +325,7 @@ public:
         label_11 = new QLabel(tab);
         label_11->setObjectName("label_11");
         label_11->setGeometry(QRect(610, 130, 191, 21));
-        label_11->setStyleSheet(QString::fromUtf8("color: rgb(30, 41, 59);\n"
+        label_11->setStyleSheet(QString::fromUtf8("color:rgb(255, 255, 255);\n"
 ""));
         capacity = new QLineEdit(tab);
         capacity->setObjectName("capacity");
@@ -319,7 +335,7 @@ public:
         label_14 = new QLabel(tab);
         label_14->setObjectName("label_14");
         label_14->setGeometry(QRect(610, 220, 251, 21));
-        label_14->setStyleSheet(QString::fromUtf8("color: rgb(30, 41, 59);\n"
+        label_14->setStyleSheet(QString::fromUtf8("color:rgb(255, 255, 255);\n"
 ""));
         table->addTab(tab, QString());
         email->raise();
@@ -335,7 +351,6 @@ public:
         name->raise();
         year->raise();
         label_9->raise();
-        pushButton_11->raise();
         add->raise();
         phone->raise();
         domain->raise();
@@ -402,10 +417,6 @@ public:
 "color: rgb(218, 221, 239);\n"
 "border-color: rgb(37, 99, 235);\n"
 ""));
-        label_22 = new QLabel(tab_2);
-        label_22->setObjectName("label_22");
-        label_22->setGeometry(QRect(320, 200, 171, 21));
-        label_22->setStyleSheet(QString::fromUtf8("color: #1E293B;"));
         pushButton_23 = new QPushButton(tab_2);
         pushButton_23->setObjectName("pushButton_23");
         pushButton_23->setGeometry(QRect(1280, 280, 121, 41));
@@ -441,11 +452,11 @@ public:
         QTableWidgetItem *__qtablewidgetitem8 = new QTableWidgetItem();
         data->setHorizontalHeaderItem(8, __qtablewidgetitem8);
         data->setObjectName("data");
-        data->setGeometry(QRect(0, 90, 1121, 361));
-        data->setStyleSheet(QString::fromUtf8("background-color: rgb(0, 0, 127);"));
-        download = new QPushButton(tab_2);
-        download->setObjectName("download");
-        download->setGeometry(QRect(870, 490, 211, 41));
+        data->setGeometry(QRect(0, 90, 1121, 131));
+        data->setStyleSheet(QString::fromUtf8("background-color: rgb(0, 0, 0);"));
+        downloadPdf = new QPushButton(tab_2);
+        downloadPdf->setObjectName("downloadPdf");
+        downloadPdf->setGeometry(QRect(870, 490, 211, 41));
         label_19 = new QLabel(tab_2);
         label_19->setObjectName("label_19");
         label_19->setGeometry(QRect(60, 780, 191, 21));
@@ -461,36 +472,91 @@ public:
         label_24->setGeometry(QRect(590, 780, 281, 21));
         label_24->setStyleSheet(QString::fromUtf8("color: rgb(30, 41, 59);\n"
 ""));
+        filter = new QComboBox(tab_2);
+        filter->setObjectName("filter");
+        filter->setGeometry(QRect(810, 30, 191, 28));
+        label_33 = new QLabel(tab_2);
+        label_33->setObjectName("label_33");
+        label_33->setGeometry(QRect(810, 0, 171, 21));
+        label_33->setStyleSheet(QString::fromUtf8("color:rgb(255, 255, 255);"));
+        tech = new QProgressBar(tab_2);
+        tech->setObjectName("tech");
+        tech->setGeometry(QRect(90, 250, 351, 21));
+        tech->setValue(0);
+        education = new QProgressBar(tab_2);
+        education->setObjectName("education");
+        education->setGeometry(QRect(90, 410, 351, 21));
+        education->setValue(0);
+        health = new QProgressBar(tab_2);
+        health->setObjectName("health");
+        health->setGeometry(QRect(90, 330, 351, 21));
+        health->setValue(0);
+        media = new QProgressBar(tab_2);
+        media->setObjectName("media");
+        media->setGeometry(QRect(510, 250, 351, 21));
+        media->setValue(0);
+        retail = new QProgressBar(tab_2);
+        retail->setObjectName("retail");
+        retail->setGeometry(QRect(90, 370, 351, 21));
+        retail->setValue(0);
+        other = new QProgressBar(tab_2);
+        other->setObjectName("other");
+        other->setGeometry(QRect(510, 410, 351, 21));
+        other->setValue(0);
+        real = new QProgressBar(tab_2);
+        real->setObjectName("real");
+        real->setGeometry(QRect(510, 370, 351, 21));
+        real->setValue(0);
+        finance = new QProgressBar(tab_2);
+        finance->setObjectName("finance");
+        finance->setGeometry(QRect(90, 290, 351, 21));
+        finance->setValue(0);
+        food = new QProgressBar(tab_2);
+        food->setObjectName("food");
+        food->setGeometry(QRect(510, 330, 351, 21));
+        food->setValue(0);
+        automative = new QProgressBar(tab_2);
+        automative->setObjectName("automative");
+        automative->setGeometry(QRect(510, 290, 351, 21));
+        automative->setValue(0);
+        stat = new QPushButton(tab_2);
+        stat->setObjectName("stat");
+        stat->setGeometry(QRect(180, 460, 211, 41));
+        chatBotButton = new QPushButton(tab_2);
+        chatBotButton->setObjectName("chatBotButton");
+        chatBotButton->setGeometry(QRect(460, 580, 211, 41));
         table->addTab(tab_2, QString());
         tab_3 = new QWidget();
         tab_3->setObjectName("tab_3");
         cr1 = new QLineEdit(tab_3);
         cr1->setObjectName("cr1");
-        cr1->setGeometry(QRect(80, 190, 241, 41));
+        cr1->setGeometry(QRect(50, 230, 241, 41));
         cr1->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);\n"
 "background-color: rgb(255, 255, 255);"));
         label_16 = new QLabel(tab_3);
         label_16->setObjectName("label_16");
         label_16->setGeometry(QRect(370, 250, 171, 21));
-        label_16->setStyleSheet(QString::fromUtf8("color: #1E293B;"));
+        label_16->setStyleSheet(QString::fromUtf8("color:rgb(255, 255, 255);\n"
+""));
         label_17 = new QLabel(tab_3);
         label_17->setObjectName("label_17");
-        label_17->setGeometry(QRect(80, 330, 191, 21));
-        label_17->setStyleSheet(QString::fromUtf8("color: rgb(30, 41, 59);\n"
+        label_17->setGeometry(QRect(370, 500, 191, 21));
+        label_17->setStyleSheet(QString::fromUtf8("color:rgb(255, 255, 255);\n"
+"\n"
 ""));
         label_25 = new QLabel(tab_3);
         label_25->setObjectName("label_25");
-        label_25->setGeometry(QRect(80, 160, 191, 21));
-        label_25->setStyleSheet(QString::fromUtf8("color: rgb(30, 41, 59);\n"
+        label_25->setGeometry(QRect(50, 200, 191, 21));
+        label_25->setStyleSheet(QString::fromUtf8("color:rgb(255, 255, 255);\n"
 ""));
         capacity1 = new QLineEdit(tab_3);
         capacity1->setObjectName("capacity1");
-        capacity1->setGeometry(QRect(670, 330, 241, 41));
+        capacity1->setGeometry(QRect(680, 360, 241, 41));
         capacity1->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);\n"
 "background-color: rgb(255, 255, 255);"));
         year1 = new QDateEdit(tab_3);
         year1->setObjectName("year1");
-        year1->setGeometry(QRect(80, 440, 241, 41));
+        year1->setGeometry(QRect(370, 610, 241, 41));
         year1->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);\n"
 "background-color: rgb(255, 255, 255);"));
         address1 = new QLineEdit(tab_3);
@@ -501,18 +567,11 @@ public:
 ""));
         label_26 = new QLabel(tab_3);
         label_26->setObjectName("label_26");
-        label_26->setGeometry(QRect(80, 410, 171, 21));
+        label_26->setGeometry(QRect(370, 580, 171, 21));
         label_26->setStyleSheet(QString::fromUtf8("color: #1E293B;"));
-        domain1 = new QComboBox(tab_3);
-        domain1->addItem(QString());
-        domain1->addItem(QString());
-        domain1->addItem(QString());
-        domain1->addItem(QString());
-        domain1->setObjectName("domain1");
-        domain1->setGeometry(QRect(80, 360, 241, 41));
         email1 = new QLineEdit(tab_3);
         email1->setObjectName("email1");
-        email1->setGeometry(QRect(80, 280, 241, 41));
+        email1->setGeometry(QRect(370, 450, 241, 41));
         email1->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);\n"
 "background-color: rgb(255, 255, 255);"));
         phone1 = new QLineEdit(tab_3);
@@ -522,18 +581,19 @@ public:
 "background-color: rgb(255, 255, 255);"));
         label_27 = new QLabel(tab_3);
         label_27->setObjectName("label_27");
-        label_27->setGeometry(QRect(670, 300, 251, 21));
-        label_27->setStyleSheet(QString::fromUtf8("color: rgb(30, 41, 59);\n"
+        label_27->setGeometry(QRect(680, 330, 251, 21));
+        label_27->setStyleSheet(QString::fromUtf8("color:rgb(255, 255, 255);\n"
 ""));
         label_28 = new QLabel(tab_3);
         label_28->setObjectName("label_28");
-        label_28->setGeometry(QRect(670, 210, 191, 21));
-        label_28->setStyleSheet(QString::fromUtf8("color: rgb(30, 41, 59);\n"
+        label_28->setGeometry(QRect(680, 240, 191, 21));
+        label_28->setStyleSheet(QString::fromUtf8("color:rgb(255, 255, 255);\n"
 ""));
         label_29 = new QLabel(tab_3);
         label_29->setObjectName("label_29");
         label_29->setGeometry(QRect(370, 160, 171, 21));
-        label_29->setStyleSheet(QString::fromUtf8("color: #1E293B;"));
+        label_29->setStyleSheet(QString::fromUtf8("color:rgb(255, 255, 255);\n"
+""));
         name1 = new QLineEdit(tab_3);
         name1->setObjectName("name1");
         name1->setGeometry(QRect(370, 190, 241, 41));
@@ -543,29 +603,22 @@ public:
         label_30 = new QLabel(tab_3);
         label_30->setObjectName("label_30");
         label_30->setGeometry(QRect(370, 330, 251, 21));
-        label_30->setStyleSheet(QString::fromUtf8("color: #1E293B;"));
+        label_30->setStyleSheet(QString::fromUtf8("color:rgb(255, 255, 255);\n"
+""));
         type1 = new QLineEdit(tab_3);
         type1->setObjectName("type1");
-        type1->setGeometry(QRect(670, 240, 241, 41));
+        type1->setGeometry(QRect(680, 270, 241, 41));
         type1->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);\n"
 "background-color: rgb(255, 255, 255);"));
         label_31 = new QLabel(tab_3);
         label_31->setObjectName("label_31");
-        label_31->setGeometry(QRect(80, 250, 191, 21));
-        label_31->setStyleSheet(QString::fromUtf8("color: rgb(30, 41, 59);\n"
-""));
-        pushButton_14 = new QPushButton(tab_3);
-        pushButton_14->setObjectName("pushButton_14");
-        pushButton_14->setGeometry(QRect(650, 50, 291, 51));
-        pushButton_14->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
-"border-color: rgb(37, 99, 235);\n"
-"font: 11pt \"Sitka\";\n"
-"color: rgb(0, 0, 0);\n"
+        label_31->setGeometry(QRect(370, 420, 191, 21));
+        label_31->setStyleSheet(QString::fromUtf8("color:rgb(255, 255, 255);\n"
 "\n"
 ""));
         pushButton_15 = new QPushButton(tab_3);
         pushButton_15->setObjectName("pushButton_15");
-        pushButton_15->setGeometry(QRect(10, 50, 261, 51));
+        pushButton_15->setGeometry(QRect(310, 50, 471, 51));
         pushButton_15->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
 "border-color: rgb(37, 99, 235);\n"
 "font: 11pt \"Sitka\";\n"
@@ -574,7 +627,7 @@ public:
 ""));
         line_2 = new QFrame(tab_3);
         line_2->setObjectName("line_2");
-        line_2->setGeometry(QRect(630, 190, 20, 231));
+        line_2->setGeometry(QRect(340, 150, 20, 551));
         line_2->setFrameShape(QFrame::Shape::VLine);
         line_2->setFrameShadow(QFrame::Shadow::Sunken);
         upd = new QPushButton(tab_3);
@@ -584,6 +637,26 @@ public:
 "background-color: rgb(137, 81, 249);\n"
 "\n"
 ""));
+        load = new QPushButton(tab_3);
+        load->setObjectName("load");
+        load->setGeometry(QRect(200, 320, 141, 41));
+        load->setStyleSheet(QString::fromUtf8("font: 11pt \"Segoe UI\";\n"
+"background-color: rgb(137, 81, 249);\n"
+"\n"
+""));
+        domain1 = new QComboBox(tab_3);
+        domain1->addItem(QString());
+        domain1->addItem(QString());
+        domain1->addItem(QString());
+        domain1->addItem(QString());
+        domain1->addItem(QString());
+        domain1->addItem(QString());
+        domain1->addItem(QString());
+        domain1->addItem(QString());
+        domain1->addItem(QString());
+        domain1->addItem(QString());
+        domain1->setObjectName("domain1");
+        domain1->setGeometry(QRect(370, 530, 241, 41));
         table->addTab(tab_3, QString());
         tab_4 = new QWidget();
         tab_4->setObjectName("tab_4");
@@ -604,8 +677,7 @@ public:
         label_32 = new QLabel(tab_4);
         label_32->setObjectName("label_32");
         label_32->setGeometry(QRect(410, 200, 191, 21));
-        label_32->setStyleSheet(QString::fromUtf8("color: rgb(30, 41, 59);\n"
-""));
+        label_32->setStyleSheet(QString::fromUtf8("color:rgb(255, 255, 255);"));
         del = new QPushButton(tab_4);
         del->setObjectName("del");
         del->setGeometry(QRect(700, 500, 311, 41));
@@ -625,6 +697,19 @@ public:
         comboBox_4->addItem(QString());
         comboBox_4->setObjectName("comboBox_4");
         comboBox_4->setGeometry(QRect(760, 900, 241, 41));
+        domain_2 = new QComboBox(centralWidget);
+        domain_2->addItem(QString());
+        domain_2->addItem(QString());
+        domain_2->addItem(QString());
+        domain_2->addItem(QString());
+        domain_2->addItem(QString());
+        domain_2->addItem(QString());
+        domain_2->addItem(QString());
+        domain_2->addItem(QString());
+        domain_2->addItem(QString());
+        domain_2->addItem(QString());
+        domain_2->setObjectName("domain_2");
+        domain_2->setGeometry(QRect(840, 900, 241, 41));
         MainWindow->setCentralWidget(centralWidget);
         label_3->raise();
         label->raise();
@@ -639,6 +724,7 @@ public:
         pushButton_7->raise();
         table->raise();
         comboBox_4->raise();
+        domain_2->raise();
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName("menuBar");
         menuBar->setGeometry(QRect(0, 0, 1293, 25));
@@ -681,14 +767,19 @@ public:
         label_15->setText(QCoreApplication::translate("MainWindow", "Address:", nullptr));
         name->setText(QString());
         label_9->setText(QCoreApplication::translate("MainWindow", "Email:", nullptr));
-        pushButton_11->setText(QCoreApplication::translate("MainWindow", "Sponsor Informations", nullptr));
         email->setText(QString());
         add->setText(QCoreApplication::translate("MainWindow", "ADD Sponsor", nullptr));
         phone->setText(QString());
-        domain->setItemText(0, QCoreApplication::translate("MainWindow", "Domain", nullptr));
-        domain->setItemText(1, QCoreApplication::translate("MainWindow", "bbbb", nullptr));
-        domain->setItemText(2, QCoreApplication::translate("MainWindow", "aaaa", nullptr));
-        domain->setItemText(3, QCoreApplication::translate("MainWindow", "kkkk", nullptr));
+        domain->setItemText(0, QCoreApplication::translate("MainWindow", "Technology", nullptr));
+        domain->setItemText(1, QCoreApplication::translate("MainWindow", "Finance", nullptr));
+        domain->setItemText(2, QCoreApplication::translate("MainWindow", "Health", nullptr));
+        domain->setItemText(3, QCoreApplication::translate("MainWindow", "Retail & E-commerce", nullptr));
+        domain->setItemText(4, QCoreApplication::translate("MainWindow", "Education & Training", nullptr));
+        domain->setItemText(5, QCoreApplication::translate("MainWindow", "Media & Entertainement", nullptr));
+        domain->setItemText(6, QCoreApplication::translate("MainWindow", "Automotive", nullptr));
+        domain->setItemText(7, QCoreApplication::translate("MainWindow", "Food", nullptr));
+        domain->setItemText(8, QCoreApplication::translate("MainWindow", "Real Estate", nullptr));
+        domain->setItemText(9, QCoreApplication::translate("MainWindow", "Other", nullptr));
 
         pushButton_12->setText(QCoreApplication::translate("MainWindow", "Sponsorship_Financial Details", nullptr));
         type->setText(QString());
@@ -703,7 +794,6 @@ public:
         label_21->setText(QCoreApplication::translate("MainWindow", "User Name", nullptr));
         pushButton_19->setText(QCoreApplication::translate("MainWindow", "Sponsor DATA :", nullptr));
         pushButton_21->setText(QCoreApplication::translate("MainWindow", "Add User", nullptr));
-        label_22->setText(QCoreApplication::translate("MainWindow", "research ", nullptr));
         pushButton_23->setText(QCoreApplication::translate("MainWindow", "Update", nullptr));
         label_23->setText(QString());
         QTableWidgetItem *___qtablewidgetitem = data->horizontalHeaderItem(0);
@@ -724,10 +814,13 @@ public:
         ___qtablewidgetitem7->setText(QCoreApplication::translate("MainWindow", "Year Of Foundation", nullptr));
         QTableWidgetItem *___qtablewidgetitem8 = data->horizontalHeaderItem(8);
         ___qtablewidgetitem8->setText(QCoreApplication::translate("MainWindow", "Financial Capacity For Sponsorship", nullptr));
-        download->setText(QCoreApplication::translate("MainWindow", "Domnload ", nullptr));
+        downloadPdf->setText(QCoreApplication::translate("MainWindow", "Download ", nullptr));
         label_19->setText(QCoreApplication::translate("MainWindow", "Bar Chart (Best for degree)", nullptr));
         label_20->setText(QCoreApplication::translate("MainWindow", " Pie Chart (Best for field of study)", nullptr));
         label_24->setText(QCoreApplication::translate("MainWindow", "Bar Chart (Top 5 most common key skills)", nullptr));
+        label_33->setText(QCoreApplication::translate("MainWindow", "filter", nullptr));
+        stat->setText(QCoreApplication::translate("MainWindow", "domain statistics", nullptr));
+        chatBotButton->setText(QCoreApplication::translate("MainWindow", "bot", nullptr));
         table->setTabText(table->indexOf(tab_2), QCoreApplication::translate("MainWindow", "Read", nullptr));
         cr1->setText(QString());
         label_16->setText(QCoreApplication::translate("MainWindow", "Phone Number:", nullptr));
@@ -736,11 +829,6 @@ public:
         capacity1->setText(QString());
         address1->setText(QString());
         label_26->setText(QCoreApplication::translate("MainWindow", "Foundation Year", nullptr));
-        domain1->setItemText(0, QCoreApplication::translate("MainWindow", "Domain", nullptr));
-        domain1->setItemText(1, QCoreApplication::translate("MainWindow", "bbbb", nullptr));
-        domain1->setItemText(2, QCoreApplication::translate("MainWindow", "aaaa", nullptr));
-        domain1->setItemText(3, QCoreApplication::translate("MainWindow", "kkkk", nullptr));
-
         email1->setText(QString());
         phone1->setText(QString());
         label_27->setText(QCoreApplication::translate("MainWindow", "Financial Capacity for Sponsorship:", nullptr));
@@ -750,9 +838,20 @@ public:
         label_30->setText(QCoreApplication::translate("MainWindow", "Address:", nullptr));
         type1->setText(QString());
         label_31->setText(QCoreApplication::translate("MainWindow", "Email:", nullptr));
-        pushButton_14->setText(QCoreApplication::translate("MainWindow", "Sponsorship_Financial Details", nullptr));
-        pushButton_15->setText(QCoreApplication::translate("MainWindow", "Sponsor Informations", nullptr));
+        pushButton_15->setText(QCoreApplication::translate("MainWindow", "SPONSOR DETAILS", nullptr));
         upd->setText(QCoreApplication::translate("MainWindow", "UPDATE", nullptr));
+        load->setText(QCoreApplication::translate("MainWindow", "load", nullptr));
+        domain1->setItemText(0, QCoreApplication::translate("MainWindow", "Technology", nullptr));
+        domain1->setItemText(1, QCoreApplication::translate("MainWindow", "Finance", nullptr));
+        domain1->setItemText(2, QCoreApplication::translate("MainWindow", "Health", nullptr));
+        domain1->setItemText(3, QCoreApplication::translate("MainWindow", "Retail & E-commerce", nullptr));
+        domain1->setItemText(4, QCoreApplication::translate("MainWindow", "Education & Training", nullptr));
+        domain1->setItemText(5, QCoreApplication::translate("MainWindow", "Media & Entertainement", nullptr));
+        domain1->setItemText(6, QCoreApplication::translate("MainWindow", "Automotive", nullptr));
+        domain1->setItemText(7, QCoreApplication::translate("MainWindow", "Food", nullptr));
+        domain1->setItemText(8, QCoreApplication::translate("MainWindow", "Real Estate", nullptr));
+        domain1->setItemText(9, QCoreApplication::translate("MainWindow", "Other", nullptr));
+
         table->setTabText(table->indexOf(tab_3), QCoreApplication::translate("MainWindow", "Update", nullptr));
         pushButton_18->setText(QCoreApplication::translate("MainWindow", "Delete Sponsor", nullptr));
         code->setText(QString());
@@ -763,6 +862,17 @@ public:
         comboBox_4->setItemText(0, QCoreApplication::translate("MainWindow", "bbbb", nullptr));
         comboBox_4->setItemText(1, QCoreApplication::translate("MainWindow", "aaaa", nullptr));
         comboBox_4->setItemText(2, QCoreApplication::translate("MainWindow", "kkkk", nullptr));
+
+        domain_2->setItemText(0, QCoreApplication::translate("MainWindow", "Technology", nullptr));
+        domain_2->setItemText(1, QCoreApplication::translate("MainWindow", "Finance", nullptr));
+        domain_2->setItemText(2, QCoreApplication::translate("MainWindow", "Health", nullptr));
+        domain_2->setItemText(3, QCoreApplication::translate("MainWindow", "Retail & E-commerce", nullptr));
+        domain_2->setItemText(4, QCoreApplication::translate("MainWindow", "Education & Training", nullptr));
+        domain_2->setItemText(5, QCoreApplication::translate("MainWindow", "Media & Entertainement", nullptr));
+        domain_2->setItemText(6, QCoreApplication::translate("MainWindow", "Automotive", nullptr));
+        domain_2->setItemText(7, QCoreApplication::translate("MainWindow", "Food", nullptr));
+        domain_2->setItemText(8, QCoreApplication::translate("MainWindow", "Real Estate", nullptr));
+        domain_2->setItemText(9, QCoreApplication::translate("MainWindow", "Other", nullptr));
 
     } // retranslateUi
 

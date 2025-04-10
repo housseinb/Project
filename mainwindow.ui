@@ -217,11 +217,10 @@ color: rgb(218, 221, 239);
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(0, 0, 0);
-background-color: rgb(255, 137, 83);</string>
+     <string notr="true">background-color: rgb(0, 0, 0);</string>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -426,27 +425,6 @@ background-color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
        <string>Email:</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_11">
-      <property name="geometry">
-       <rect>
-        <x>160</x>
-        <y>10</y>
-        <width>261</width>
-        <height>51</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);
-border-color: rgb(37, 99, 235);
-font: 11pt &quot;Sitka&quot;;
-color: rgb(0, 0, 0);
-
-</string>
-      </property>
-      <property name="text">
-       <string>Sponsor Informations</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="email">
@@ -664,7 +642,6 @@ background-color: rgb(255, 255, 255);</string>
      <zorder>name</zorder>
      <zorder>year</zorder>
      <zorder>label_9</zorder>
-     <zorder>pushButton_11</zorder>
      <zorder>add</zorder>
      <zorder>phone</zorder>
      <zorder>domain</zorder>
@@ -1155,6 +1132,19 @@ border-color: rgb(37, 99, 235);
       </property>
       <property name="text">
        <string>domain statistics</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="chatBotButton">
+      <property name="geometry">
+       <rect>
+        <x>460</x>
+        <y>580</y>
+        <width>211</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>bot</string>
       </property>
      </widget>
     </widget>
