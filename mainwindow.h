@@ -21,6 +21,19 @@
 ///
 #include <QThread>
 #include <QProcess>
+///
+///
+///
+///
+#include <QtCharts/QChartView>
+#include <QtCharts/QBarSeries>
+#include <QtCharts/QBarSet>
+#include <QtCharts/QBarCategoryAxis>
+#include <QtCharts/QValueAxis>
+#include <QtCharts/QLegend>
+#include <QVBoxLayout>
+
+
 
 namespace Ui {
 class MainWindow;
@@ -58,10 +71,12 @@ private:
     void createDiplomaChart(const QMap<QString, int>& data);
     void createDomainChart(const QMap<QString, int>& data);
     void createAgeGroupChart(const QMap<QString, int>& data);
+    void showGeneratedLogo(const QString& logoPath);
     void generateLogo();
     void regenerate();
     void loadGallery();              // Function to load gallery images
-    void clearGallery();             // Function to clear the gallery
+
+    void showClientsByDiplomeChart();
 };
 
 ////

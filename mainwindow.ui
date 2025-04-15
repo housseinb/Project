@@ -1114,99 +1114,15 @@ background-color: rgb(255, 255, 255);</string>
        <string>Research</string>
       </property>
      </widget>
-     <widget class="QGroupBox" name="groupBox">
+     <widget class="QWidget" name="chartContainer" native="true">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>520</y>
-        <width>1181</width>
-        <height>381</height>
+        <x>20</x>
+        <y>560</y>
+        <width>1101</width>
+        <height>221</height>
        </rect>
       </property>
-      <property name="title">
-       <string>GroupBox</string>
-      </property>
-      <widget class="QGraphicsView" name="graphicsView_4">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>60</y>
-         <width>371</width>
-         <height>231</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QGraphicsView" name="graphicsView_6">
-       <property name="geometry">
-        <rect>
-         <x>800</x>
-         <y>60</y>
-         <width>321</width>
-         <height>231</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QGraphicsView" name="graphicsView_5">
-       <property name="geometry">
-        <rect>
-         <x>420</x>
-         <y>60</y>
-         <width>351</width>
-         <height>231</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_34">
-       <property name="geometry">
-        <rect>
-         <x>60</x>
-         <y>320</y>
-         <width>191</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">color: rgb(30, 41, 59);
-</string>
-       </property>
-       <property name="text">
-        <string>Bar Chart (Best for degree)</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_36">
-       <property name="geometry">
-        <rect>
-         <x>450</x>
-         <y>320</y>
-         <width>281</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">color: rgb(30, 41, 59);
-</string>
-       </property>
-       <property name="text">
-        <string> Pie Chart (Best for field of study)</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_42">
-       <property name="geometry">
-        <rect>
-         <x>780</x>
-         <y>330</y>
-         <width>281</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">color: rgb(30, 41, 59);
-</string>
-       </property>
-       <property name="text">
-        <string>Bar Chart (Top 5 most common key skills)</string>
-       </property>
-      </widget>
      </widget>
     </widget>
     <widget class="QWidget" name="pushButton_logoTab">
