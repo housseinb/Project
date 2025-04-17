@@ -25,7 +25,7 @@
 #include <QDate>
 #include <QMap>
 #include <QStringList>
-//#include <QTextToSpeech>
+#include <QTextToSpeech>
 #include "smtp.h"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -331,11 +331,10 @@ void MainWindow::on_pushButton_24_clicked()
 
     // Step 2: Mark the dates on the calendar
     while (query.next()) {
-        QDate date = query.value(0).toDate();  // Get the date of reservation
-        if (date.isValid()) {
-            //QTextToSpeech *tts = new QTextToSpeech(&app);
-            //tts->say("Welcome");
-        }
+        QString date = query.value(0).toString();  // Get the date of reservation
+            QTextToSpeech *speech = new QTextToSpeech();
+            speech->say("Vous avez un rendez-vous au " + date);
+
     }
 }
 void  MainWindow::markRendezvousOnCalendar(QCalendarWidget *calendar) {
