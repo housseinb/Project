@@ -35,6 +35,7 @@
 
 
 
+
 namespace Ui {
 class MainWindow;
 }
@@ -77,6 +78,8 @@ private:
     void loadGallery();              // Function to load gallery images
 
     void showClientsByDiplomeChart();
+    void showClientsByDomaineChart();
+    void showClientsByAgeGroupChart();
 };
 
 ////
