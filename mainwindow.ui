@@ -293,7 +293,7 @@ font: 75 16pt &quot;MS Shell Dlg 2&quot;;
 </string>
       </property>
       <property name="text">
-       <string>Your Phone Number</string>
+       <string>Phone Number</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_12">
@@ -310,7 +310,7 @@ font: 75 16pt &quot;MS Shell Dlg 2&quot;;
 font: 75 16pt &quot;MS Shell Dlg 2&quot;;</string>
       </property>
       <property name="text">
-       <string>Your Name</string>
+       <string>Name</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_15">
@@ -327,7 +327,7 @@ font: 75 16pt &quot;MS Shell Dlg 2&quot;;</string>
 font: 75 16pt &quot;MS Shell Dlg 2&quot;;</string>
       </property>
       <property name="text">
-       <string>Your Email</string>
+       <string>Email</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="Name">

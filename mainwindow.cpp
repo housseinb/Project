@@ -3,7 +3,6 @@
 #include <QMessageBox>
 #include <QIntValidator>
 #include <QRegularExpressionValidator>
-#include "connection.h"
 #include <QMessageBox>
 #include<QSystemTrayIcon>
 #include "connection.h"
@@ -176,6 +175,7 @@ void MainWindow::on_pushButton_10_clicked()
     ui->update->setVisible(true);
     ui->pushButton_8->setVisible(false);
 }
+
 void MainWindow::on_update_clicked()
 {
     QString Name = ui->Name->text().trimmed();
@@ -207,7 +207,7 @@ void MainWindow::on_update_clicked()
         return;
     }
 
-    bool test = r.modifier(id,0,"",Name,Phone,Email,Date,Time);
+    bool test = r.modifier(id,1,ui->sponsor->currentText(),Name,Phone,Email,Date,Time);
     if (test) {
         markRendezvousOnCalendar(ui->calendarWidget);
         QMessageBox::information(nullptr, QObject::tr("ok"),
@@ -222,7 +222,7 @@ void MainWindow::on_update_clicked()
         ui->update->setVisible(false);
         ui->pushButton_8->setVisible(true);
     } else {
-        QMessageBox::critical(nullptr, QObject::tr("not ok"), QObject::tr("Ajout non effectué"), QMessageBox::Cancel);
+        QMessageBox::critical(nullptr, QObject::tr("not ok"), QObject::tr("UPDATE non effectué"), QMessageBox::Cancel);
     }
 }
 
@@ -333,14 +333,14 @@ void MainWindow::on_pushButton_24_clicked()
     while (query.next()) {
         QString date = query.value(0).toString();  // Get the date of reservation
             QTextToSpeech *speech = new QTextToSpeech();
-            speech->say("Vous avez un rendez-vous au " + date);
+            speech->say("YOU HAVE A RENDEZVOUS ON  " + date);
 
     }
 }
 void  MainWindow::markRendezvousOnCalendar(QCalendarWidget *calendar) {
     // Step 1: Retrieve rendezvous data (date_de_reservation)
     QSqlQuery query;
-    query.prepare("SELECT date_de_reservation FROM rendezvous ");  // Query to fetch all rendezvous
+    query.prepare("SELECT DATE_DE_RESERVATION FROM RENDEZVOUS ");  // Query to fetch all rendezvous
     if (!query.exec()) {
         qDebug() << "Error fetching rendezvous data:" << query.lastError();
         return;
@@ -348,7 +348,8 @@ void  MainWindow::markRendezvousOnCalendar(QCalendarWidget *calendar) {
 
     // Step 2: Mark the dates on the calendar
     while (query.next()) {
-        QDate date = query.value(0).toDate();  // Get the date of reservation
+        QString dateStr = query.value(0).toString();
+        QDate date = QDate::fromString(dateStr, "M/d/yyyy"); // OR "d/M/yyyy" depending on your format
         if (date.isValid()) {
             // Create a text format to highlight the date
             QTextCharFormat format;
@@ -359,37 +360,50 @@ void  MainWindow::markRendezvousOnCalendar(QCalendarWidget *calendar) {
         }
     }
 }
-
+// stat
 void MainWindow::on_pushButton_22_clicked()
 {
-    // Step 1: Retrieve rendezvous data from the database
     QSqlQueryModel *model = new QSqlQueryModel();
-    model->setQuery("SELECT date_de_reservation FROM rendezvous");
+    model->setQuery("SELECT DATE_DE_RESERVATION FROM RENDEZVOUS");
+
+    // Debug: Print all the dates
+    for (int row = 0; row < model->rowCount(); ++row) {
+        QVariant value = model->data(model->index(row, 0)); // 0 is the column index
+        qDebug() << "DATE_DE_RESERVATION:" << value.toString();
+    }
 
     // Create a map to store rendezvous count by month
     QMap<int, int> rendezvousByMonth;
 
-    // Count rendezvous per month
+    // Ensure all data is fetched
     while (model->canFetchMore()) {
         model->fetchMore();
     }
 
+    // Count rendezvous per month
     for (int i = 0; i < model->rowCount(); ++i) {
-        QDate date = model->data(model->index(i, 0)).toDate();
-        int month = date.month();
-        rendezvousByMonth[month]++;
+        QString dateStr = model->data(model->index(i, 0)).toString();
+        QDate date = QDate::fromString(dateStr, "M/d/yyyy"); // Use "d/M/yyyy" if needed
+
+        if (date.isValid()) {
+            int month = date.month();
+            rendezvousByMonth[month]++;
+            qDebug() << "Parsed date:" << date.toString("yyyy-MM-dd") << "Month:" << month;
+        } else {
+            qDebug() << "Invalid date:" << dateStr;
+        }
     }
 
-    // Step 2: Prepare the data for the chart
-    QStringList months = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
-    QList<int> rendezvousCounts(12, 0);  // Initialize list with 12 months
+    // Prepare the data for the chart
+    QStringList months = {"January", "February", "March", "April", "May", "June",
+                          "July", "August", "September", "October", "November", "December"};
+    QList<int> rendezvousCounts(12, 0); // Initialize list with 12 months
 
-    // Populate the rendezvousCounts list with data from the map
     for (int month = 1; month <= 12; ++month) {
         rendezvousCounts[month - 1] = rendezvousByMonth.value(month, 0);
     }
 
-    // Step 3: Create the bar chart
+    // Create the bar chart
     QBarSet *set = new QBarSet("Rendezvous");
     for (int count : rendezvousCounts) {
         *set << count;
@@ -398,14 +412,13 @@ void MainWindow::on_pushButton_22_clicked()
     QBarSeries *series = new QBarSeries();
     series->append(set);
 
-    // Create a chart and set its title
     QChart *chart = new QChart();
     chart->addSeries(series);
     chart->setTitle("Rendezvous by Month");
 
-    // Step 4: Set up the axes
+    // Set up the axes
     QBarCategoryAxis *axisX = new QBarCategoryAxis();
-    axisX->append(months);  // Set months for the X-axis
+    axisX->append(months);
     chart->setAxisX(axisX, series);
 
     QValueAxis *axisY = new QValueAxis();
@@ -413,7 +426,7 @@ void MainWindow::on_pushButton_22_clicked()
     axisY->setLabelFormat("%i");
     chart->setAxisY(axisY, series);
 
-    // Step 5: Display the chart in a view
+    // Display the chart
     QChartView *chartView = new QChartView(chart);
     chartView->setRenderHint(QPainter::Antialiasing);
     chartView->resize(1000, 500);
@@ -423,8 +436,8 @@ void MainWindow::on_pushButton_22_clicked()
 
 void MainWindow::populateComboBox(QComboBox *sponsor) {
 
-    // Query to select CODEFISCAL from SPONSOR
-    QSqlQuery query("SELECT CODEFISCAL FROM SPONSOR");
+    // Query to select CODE_FISCAL from SPONSOR
+    QSqlQuery query("SELECT CODE_FISCAL FROM SPONSOR");
     while (query.next()) {
         QString codeFiscal = query.value(0).toString();
         sponsor->addItem(codeFiscal); // Add CODEFISCAL to ComboBox
