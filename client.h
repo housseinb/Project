@@ -25,14 +25,19 @@ private:
     QString diploma; // ComboBox field
     QString domain; // ComboBox field
     QStringList skills; // List of skills
+    QString position;
 
 
 public:
     Client();  // Default constructor
     Client(QString firstName, QString lastName, QString email, QDate dateOfBirth,
-           QString address, QString phone, QString diploma, QString domain, QStringList skills); // Parameterized constructor
+           QString address, QString phone, QString diploma, QString domain, QStringList skills,
+           QString position = "waiting"); // default position
+
     Client(int idClient, QString firstName, QString lastName, QString email, QDate dateOfBirth,
-           QString address, QString phone, QString diploma, QString domain, QStringList skills); // Parameterized constructor
+           QString address, QString phone, QString diploma, QString domain, QStringList skills,
+           QString position = "waiting"); // default position
+
 
 
     // Getters

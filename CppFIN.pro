@@ -4,6 +4,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++17
 QT += widgets sql charts
+QT += serialport
 
 
 
@@ -12,18 +13,23 @@ QT += widgets sql charts
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    arduino.cpp \
     client.cpp \
     connection.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    nour.cpp
 
 HEADERS += \
+    arduino.h \
     client.h \
     connection.h \
-    mainwindow.h
+    mainwindow.h \
+    nour.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    nour.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

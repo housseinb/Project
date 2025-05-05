@@ -50,9 +50,10 @@ Client::Client()
 }
 
 Client::Client(QString firstName, QString lastName, QString email, QDate dateOfBirth,
-               QString address, QString phone, QString diploma, QString domain, QStringList skills)
+               QString address, QString phone, QString diploma, QString domain, QStringList skills,
+               QString position)
 {
-    this->idClient = 0; // Will be assigned by the database
+    this->idClient = 0;
     this->firstName = firstName;
     this->lastName = lastName;
     this->email = email;
@@ -62,10 +63,12 @@ Client::Client(QString firstName, QString lastName, QString email, QDate dateOfB
     this->diploma = diploma;
     this->domain = domain;
     this->skills = skills;
+    this->position = position;
 }
 
 Client::Client(int idClient, QString firstName, QString lastName, QString email, QDate dateOfBirth,
-               QString address, QString phone, QString diploma, QString domain, QStringList skills)
+               QString address, QString phone, QString diploma, QString domain, QStringList skills,
+               QString position)
 {
     this->idClient = idClient;
     this->firstName = firstName;
@@ -77,7 +80,9 @@ Client::Client(int idClient, QString firstName, QString lastName, QString email,
     this->diploma = diploma;
     this->domain = domain;
     this->skills = skills;
+    this->position = position;
 }
+
 
 bool Client::addClient() const
 {
