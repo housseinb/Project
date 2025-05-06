@@ -1,72 +1,103 @@
 #ifndef CHATBOT_H
 #define CHATBOT_H
 
-
-
-#include <QObject>
 #include <QString>
-#include <QStringList>
+#include <QVector>
 #include <QMap>
-#include <QSqlQuery>
+#include <QSqlDatabase>
 #include <QRegularExpression>
-#include "sponsor.h"
+#include <QPair>
 
-class ChatBot : public QObject
+class Chatbot
 {
-    Q_OBJECT
-
 public:
-    explicit ChatBot(QObject *parent = nullptr);
-     QString getResponse(const QString &message);
-    ~ChatBot();
-
-    // Process user input and generate a response
-    QString processInput(const QString &input);
-
-private:
-    // Intent recognition
-    enum Intent {
+    enum ChatState {
         GREETING,
-        FAREWELL,
-        LIST_SPONSORS,
-        FIND_SPONSOR_BY_NAME,
-        FIND_SPONSOR_BY_CODE,
-        FIND_SPONSORS_BY_DOMAIN,
-        FIND_SPONSORS_BY_CAPACITY,
-        BEST_SPONSOR,
-        GET_CONTACT_INFO,
-        UNKNOWN
+        ASK_PROBLEM,
+        ASK_AUDIENCE,
+        ASK_VALUE_PROP,
+        ASK_MARKET_ANALYSIS,  // This is the correct name in the header
+        ASK_COMPETITION,
+        RECOMMEND,
+        SPONSOR_QUERY,
+        PROJECT_FILTER
     };
 
-    // Knowledge base for responses
-    QStringList greetings;
-    QStringList farewells;
-    QStringList unknownResponses;
-    QMap<QString, QStringList> domainKeywords;
-    QMap<QString, QRegularExpression> intentPatterns;
+    Chatbot(QSqlDatabase& database);
+    ~Chatbot();
 
-    // Methods for processing intents
-    Intent recognizeIntent(const QString &input);
-    QString generateResponse(Intent intent, const QString &input);
+    QString processInput(const QString &userInput);
+    ChatState getCurrentState() const;
+    void resetConversation();
 
-    // Database query helpers
-    QList<Sponsor> getSponsors(const QString &condition = QString());
-    Sponsor getSponsorByCode(const QString &code);
-    Sponsor getSponsorByName(const QString &name);
-    QList<Sponsor> getSponsorsByDomain(const QString &domain);
-    QList<Sponsor> getSponsorsByCapacityRange(double min, double max);
-    Sponsor getBestSponsor();
-    QString getContactInfo(const QString &identifier);
+private:
+    QSqlDatabase& db;
+    ChatState currentState;
+    QMap<QString, QString> userCriteria;
+    QMap<QString, QPair<QString, ChatState>> commonResponses;
+    QStringList helpResponses;
 
-    // Helper methods for entity extraction
-    QString extractName(const QString &input);
-    QString extractCode(const QString &input);
-    QString extractDomain(const QString &input);
-    QPair<double, double> extractCapacityRange(const QString &input);
+    // Initialization
+    void initializeCommonResponses();
 
-    // Initialize response templates and patterns
-    void initializeKnowledgeBase();
+    // Input processing helpers
+    QStringList tokenizeInput(const QString &input);
+    bool isCommonPhrase(const QString &input);
+    QString getCommonResponse(const QString &input);
+    double parseFinancialAmount(const QString &amountStr);
+
+    // Field extraction
+    QString extractFieldFromQuery(const QString &query, const QStringList &fields);
+    QString extractSponsorIdentifier(const QString &query);
+    int extractProjectReference(const QString &input);
+
+    // Request detection
+    bool shouldStartProjectRecommendation(const QString &input);
+    bool containsSponsorInfoRequest(const QString &input);
+    bool isProjectRecommendationWithFilters(const QString &input);
+    bool isStatisticsRequest(const QString &input);
+
+    // Information retrieval - Projects
+    QString getDetailedProjectInfo(int projectId);
+    QString getFilteredProjectInfo(int projectId);
+    QString getProjectInfo(int projectId);
+
+    // Information retrieval - Sponsors
+    QString getSponsorDetails(const QString &identifier, const QString &specificField = "");
+    QString getAllSponsorsInfo();
+    QString getTopSponsorsByCapacity(int limit = 5);
+    QString getSponsorsByDomain(const QString &domain);
+    QString getSponsorsByCapacity(const QString &comparison, double amount);
+
+    // Statistics
+    QString getAdvancedSponsorStatistics(const QString &query);
+    QString getComprehensiveSponsorStatistics();
+    QString getSponsorCountStatistics();
+    QString getAverageCapacityStatistics();
+    QString getDomainDistributionStatistics();
+    QString getCapacityRangeStatistics();
+
+    // Main handlers
+    QString handleAdvancedSponsorQuery(const QString &query);
+    QString handleFilteredProjectRecommendation(const QString &query);
+
+    // Recommendation engines
+    QVector<int> recommendProjects();
+    QVector<int> recommendProjectsWithFilters(const QString &domain, double budgetLimit);
+    // In chatbot.h, add this to the private section:
+    QMap<int, double> calculateProjectRelevance(
+        const QStringList &problemTokens,
+        const QStringList &audienceTokens,
+        const QStringList &marketTokens,
+        const QStringList &competitionTokens);
+
+    QMap<int, double> calculateProjectRelevance(
+        const QStringList &problemTokens,
+        const QStringList &audienceTokens,
+        const QStringList &valuePropTokens,
+        const QStringList &marketTokens,
+        const QStringList &competitionTokens);
+    double calculateMatchScore(const QStringList &tokens, const QString &text);
 };
-
 
 #endif // CHATBOT_H

@@ -1,0 +1,10 @@
+release/arduino.o
+release/chatbot.o
+release/chatbotdialog.o
+release/main.o
+release/connection.o
+release/mainwindow.o
+release/sponsor.o
+release/tacheamine.o
+release/moc_mainwindow.o
+release/moc_tacheamine.o

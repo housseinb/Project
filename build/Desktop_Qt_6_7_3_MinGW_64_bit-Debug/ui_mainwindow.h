@@ -738,7 +738,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        table->setCurrentIndex(0);
+        table->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(MainWindow);

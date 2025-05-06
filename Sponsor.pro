@@ -5,7 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui sql
-
+QT += printsupport
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = Sponsor
@@ -23,22 +23,29 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 CONFIG += c++11
-
+QT += widgets
 SOURCES += \
+    arduino.cpp \
     chatbot.cpp \
     chatbotdialog.cpp \
         main.cpp \
     connection.cpp \
-    sponsor.cpp
+    mainwindow.cpp \
+    sponsor.cpp \
+    tacheamine.cpp
 
 HEADERS += \
+    arduino.h \
     chatbot.h \
     chatbotdialog.h \
     connection.h \
-    sponsor.h
+    mainwindow.h \
+    sponsor.h \
+    tacheamine.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    tacheamine.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
