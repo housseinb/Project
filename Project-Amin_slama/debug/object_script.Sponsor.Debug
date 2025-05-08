@@ -1,0 +1,10 @@
+debug/arduino.o
+debug/chatbot.o
+debug/chatbotdialog.o
+debug/main.o
+debug/connection.o
+debug/mainwindow.o
+debug/sponsor.o
+debug/tacheamine.o
+debug/moc_mainwindow.o
+debug/moc_tacheamine.o

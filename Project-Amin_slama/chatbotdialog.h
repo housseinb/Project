@@ -1,0 +1,5 @@
+#ifndef CHATBOTDIALOG_H
+#define CHATBOTDIALOG_H
+
+
+#endif // CHATBOTDIALOG_H
